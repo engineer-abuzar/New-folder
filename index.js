@@ -1,13 +1,14 @@
+// api/index.js
 import express from "express";
+import { createServer } from "http";
 
-const app=express()
+const app = express();
 
-app.get('/',(req,res)=>{
-    res.send('hello world')
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
 
-})
-
-
-// app.listen(3000,()=>{
-//     console.log('app is running https://localhost:3000')
-// })
+// Export a function for Vercel to use
+export default function handler(req, res) {
+  return app(req, res);
+}
